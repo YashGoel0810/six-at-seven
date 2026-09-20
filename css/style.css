@@ -1,36 +1,37 @@
 /* ─────────────────────────────────────────────
    SIX AT SEVEN — design tokens (light theme)
+   Palette sampled from the reference swatch card:
+     Vanilla Silk #eee2d4 · Alpine Oat #d7c6b4 · Warm Greige #af9c8e
+     Cherry Velvet #471d1f · Bordeaux Noir #31181c
 
-   The accent is SPLIT on purpose. Bright brass (#e0a850) sits at 1.99:1 on
-   paper — invisible as text — so it is a FILL ONLY, always with --accent-ink
-   on top. Anything that carries text uses --accent (burnt amber).
-   Do not use --accent-fill as a text colour.
+   Cherry Velvet is DARK, so unlike a bright accent it works as text AND as a
+   fill. --accent carries text; --accent-fill is a lighter cherry used behind
+   --accent-ink (the cream) on buttons. Oat and greige are DECORATIVE ONLY —
+   1.48:1 and 2.35:1 on the page, never text.
 
    Contrast (computed in Python, WCAG 2.1 — re-run if tokens change):
-     --ink    on --bg          = 17.61:1  AAA ✓
-     --ink    on --card        = 18.82:1  AAA ✓
-     --dim    on --bg          =  6.79:1  AA body ✓
-     --dim    on --card        =  7.25:1  AA body ✓
-     --accent on --bg          =  6.13:1  AA body ✓
-     --accent on --card        =  6.56:1  AA body ✓
-     --ink    on --accent-fill =  8.86:1  AA button ✓
-     --ink    on  #d29a3e hov  =  7.56:1  AA button ✓
-     --err    on --card        =  6.54:1  AA error text ✓
-   --line is 1.29:1 on --bg: borders only, never text.
+     --ink    on --bg          = 14.63:1  AAA ✓
+     --ink    on --card        = 15.82:1  AAA ✓
+     --dim    on --bg          =  6.15:1  AA body ✓
+     --dim    on --card        =  6.65:1  AA body ✓
+     --accent on --bg          = 12.78:1  AAA ✓
+     --accent on --card        = 13.82:1  AAA ✓
+     --accent-ink on --accent  = 13.82:1  AA button ✓
+     --accent-ink on --accent-fill = 7.87:1  AA button ✓
    ───────────────────────────────────────────── */
 :root{
-  --bg:#faf7f2;          /* warm paper */
-  --card:#ffffff;
-  --card-2:#f2ede4;
-  --line:#e3dbcd;
-  --ink:#14110d;         /* body text */
-  --dim:#5c564e;         /* secondary text */
-  --accent:#8a4f0a;      /* burnt amber — TEXT-SAFE */
-  --accent-fill:#e0a850; /* bright brass — FILL ONLY */
-  --accent-ink:#14110d;  /* text that sits on --accent-fill */
-  --err:#b3261e;
-  --shadow:0 1px 2px rgba(20,17,13,.05), 0 8px 24px -12px rgba(20,17,13,.14);
-  --shadow-lift:0 2px 4px rgba(20,17,13,.06), 0 18px 40px -18px rgba(20,17,13,.22);
+  --bg:#f7f1e8;          /* vanilla silk */
+  --card:#fffaf3;
+  --card-2:#efe5d8;      /* alpine oat, lightened */
+  --line:#e0d2c0;
+  --ink:#31181c;         /* bordeaux noir */
+  --dim:#6b5550;         /* muted plum-brown */
+  --accent:#471d1f;      /* cherry velvet — text AND dark fills */
+  --accent-fill:#8c2f32; /* lifted cherry — fills under --accent-ink */
+  --accent-ink:#fffaf3;  /* cream, sits on the cherry fills */
+  --err:#a32b22;
+  --shadow:0 1px 2px rgba(49,24,28,.05), 0 8px 24px -12px rgba(49,24,28,.16);
+  --shadow-lift:0 2px 4px rgba(49,24,28,.07), 0 18px 40px -18px rgba(49,24,28,.24);
   --max:1120px;
   --r:14px;
   --z-nav:60; --z-overlay:80; --z-modal:100;
@@ -99,7 +100,7 @@ nav.scrolled{border-bottom-color:var(--line)}
   border:1px solid transparent;transition:transform .25s,background .25s,color .25s,border-color .25s,box-shadow .25s;
 }
 .btn-primary{background:var(--accent-fill);color:var(--accent-ink);box-shadow:var(--shadow)}
-.btn-primary:hover{transform:translateY(-2px);background:#d29a3e;box-shadow:var(--shadow-lift)}
+.btn-primary:hover{transform:translateY(-2px);background:var(--accent);box-shadow:var(--shadow-lift)}
 .btn-ghost{border-color:var(--line);color:var(--ink);background:var(--card)}
 .btn-ghost:hover{border-color:var(--accent);color:var(--accent)}
 .btn .arw{transition:transform .25s}
@@ -115,7 +116,7 @@ header.hero{
 .hero-glow{
   position:absolute;z-index:-1;left:50%;top:38%;transform:translate(-50%,-50%);
   width:min(900px,120vw);aspect-ratio:1;border-radius:50%;
-  background:radial-gradient(circle,rgba(224,168,80,.22),rgba(224,168,80,.06) 45%,transparent 66%);
+  background:radial-gradient(circle,rgba(140,47,50,.13),rgba(175,156,142,.10) 45%,transparent 68%);
   filter:blur(24px);pointer-events:none;
 }
 .eyebrow{
@@ -209,7 +210,7 @@ h3{font-size:19px;font-weight:600;line-height:1.35;margin-bottom:10px}
   display:block;margin-bottom:14px;
 }
 .seatcard p{color:var(--dim);font-size:15px}
-.seatcard.you{background:linear-gradient(160deg,color-mix(in srgb,var(--accent-fill) 20%,var(--card)),var(--card));
+.seatcard.you{background:linear-gradient(160deg,color-mix(in srgb,var(--accent-fill) 12%,var(--card)),var(--card));
   border-color:color-mix(in srgb,var(--accent) 38%,transparent)}
 
 /* ── marquee ── */
@@ -244,7 +245,7 @@ h3{font-size:19px;font-weight:600;line-height:1.35;margin-bottom:10px}
 /* ── pricing ── */
 .price-wrap{display:grid;grid-template-columns:1fr 1.1fr;gap:28px;align-items:start}
 .price-card{
-  background:linear-gradient(170deg,color-mix(in srgb,var(--accent-fill) 18%,var(--card)),var(--card));
+  background:linear-gradient(170deg,color-mix(in srgb,var(--accent-fill) 10%,var(--card)),var(--card));
   border:1px solid color-mix(in srgb,var(--accent) 34%,transparent);
   border-radius:20px;padding:34px 30px;box-shadow:var(--shadow-lift);
 }
@@ -273,7 +274,7 @@ h3{font-size:19px;font-weight:600;line-height:1.35;margin-bottom:10px}
   transition:border-color .2s,background .2s,transform .2s;font-family:inherit;
 }
 .opt:hover{border-color:var(--accent);transform:translateX(4px);background:var(--card)}
-.opt[aria-pressed="true"]{border-color:var(--accent);background:color-mix(in srgb,var(--accent-fill) 22%,var(--card))}
+.opt[aria-pressed="true"]{border-color:var(--accent);background:color-mix(in srgb,var(--accent-fill) 12%,var(--card))}
 .quiznav{display:flex;justify-content:space-between;gap:12px;align-items:center}
 .quiznav .back{background:none;border:none;color:var(--dim);cursor:pointer;font-size:14px;font-family:inherit;min-height:44px;padding:0 4px}
 .quiznav .back:hover{color:var(--ink)}
@@ -292,7 +293,7 @@ h3{font-size:19px;font-weight:600;line-height:1.35;margin-bottom:10px}
 .field.invalid .err{visibility:visible}
 .quizdone{text-align:center}
 .quizdone .tick{
-  width:58px;height:58px;border-radius:50%;background:color-mix(in srgb,var(--accent-fill) 30%,var(--card));
+  width:58px;height:58px;border-radius:50%;background:color-mix(in srgb,var(--accent-fill) 14%,var(--card));
   display:grid;place-items:center;margin:0 auto 18px;border:1px solid color-mix(in srgb,var(--accent) 40%,transparent);
 }
 .quizdone .tick svg{width:26px;height:26px;stroke:var(--accent);fill:none;stroke-width:2}
