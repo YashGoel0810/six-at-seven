@@ -9,7 +9,20 @@
   var hint = document.getElementById('stageHint');
   if (!canvas || !fallback) return;
 
-  var BRASS = 0xe0a850;
+  /* Scene palette — mirrors the CSS tokens in css/style.css.
+     Keep these in sync with :root; they are the only colours in this file. */
+  var C = {
+    brass:  0xe0a850,  /* --accent-fill */
+    wood:   0xc98f52,  /* light oak table top */
+    woodDk: 0xa87340,  /* chair frames */
+    metal:  0x8c8378,  /* pedestal / legs, warm grey */
+    linen:  0xffffff,  /* plates */
+    floor:  0xf2ede4,  /* --card-2 */
+    glass:  0xdce8f2,
+    flame:  0xffcf7a,
+    sun:    0xfff6e8,
+    sky:    0xd9e6f5
+  };
 
   function buildFallback() {
     canvas.style.display = 'none';
@@ -66,17 +79,30 @@
   }
 
   // ── lights: one warm pendant over the table, cool fill ──
-  scene.add(new THREE.AmbientLight(0xffffff, 0.22));
-  var pendant = new THREE.PointLight(BRASS, 62, 22, 2);
+  // ── lights: bright daylit room, warm pendant still reads over the table ──
+  scene.add(new THREE.HemisphereLight(C.sun, C.floor, 1.05));
+  scene.add(new THREE.AmbientLight(0xffffff, 0.35));
+  var pendant = new THREE.PointLight(C.brass, 26, 22, 2);
   pendant.position.set(0, 4.2, 0);
-  pendant.castShadow = true;
-  pendant.shadow.mapSize.set(1024, 1024);
+  // Only the key light casts. Letting the overhead pendant cast too stacks a
+  // heavy ellipse under the table that reads as a grey disc on a pale page.
+  pendant.castShadow = false;
   scene.add(pendant);
-  var fill = new THREE.DirectionalLight(0x8fb4ff, 0.5);
-  fill.position.set(-5, 6, 5);
+  var key = new THREE.DirectionalLight(0xffffff, 1.15);
+  key.position.set(-5, 8, 6);
+  key.castShadow = true;
+  key.shadow.mapSize.set(1024, 1024);
+  key.shadow.camera.near = 1;
+  key.shadow.camera.far = 30;
+  key.shadow.camera.left = -7; key.shadow.camera.right = 7;
+  key.shadow.camera.top = 7; key.shadow.camera.bottom = -7;
+  key.shadow.bias = -0.0005;
+  scene.add(key);
+  var fill = new THREE.DirectionalLight(C.sky, 0.45);
+  fill.position.set(6, 4, 4);
   scene.add(fill);
-  var rim = new THREE.DirectionalLight(0xffffff, 0.3);
-  rim.position.set(4, 2, -6);
+  var rim = new THREE.DirectionalLight(0xffffff, 0.35);
+  rim.position.set(4, 3, -6);
   scene.add(rim);
 
   // ── group that spins ──
@@ -84,10 +110,11 @@
   scene.add(rig);
 
   var R = 2.55;             // table radius
-  var wood = new THREE.MeshStandardMaterial({ color: 0x2c211a, roughness: 0.55, metalness: 0.12 });
-  var brassMat = new THREE.MeshStandardMaterial({ color: BRASS, roughness: 0.3, metalness: 0.85 });
-  var linen = new THREE.MeshStandardMaterial({ color: 0xf3efe7, roughness: 0.85, metalness: 0 });
-  var dark = new THREE.MeshStandardMaterial({ color: 0x16181b, roughness: 0.7, metalness: 0.2 });
+  var wood = new THREE.MeshStandardMaterial({ color: C.wood, roughness: 0.6, metalness: 0.05 });
+  var brassMat = new THREE.MeshStandardMaterial({ color: C.brass, roughness: 0.32, metalness: 0.8 });
+  var linen = new THREE.MeshStandardMaterial({ color: C.linen, roughness: 0.85, metalness: 0 });
+  var dark = new THREE.MeshStandardMaterial({ color: C.metal, roughness: 0.5, metalness: 0.45 });
+  var chairMat = new THREE.MeshStandardMaterial({ color: C.woodDk, roughness: 0.62, metalness: 0.05 });
 
   // top
   var top = new THREE.Mesh(new THREE.CylinderGeometry(R, R, 0.16, 72), wood);
@@ -106,9 +133,11 @@
   rig.add(base);
 
   // floor to catch shadow
+  // ShadowMaterial renders ONLY the received shadow, so the floor never shows
+  // as a grey disc with a hard clipped edge against the page background.
   var floor = new THREE.Mesh(
     new THREE.CircleGeometry(6.2, 64),
-    new THREE.MeshStandardMaterial({ color: 0x0d0e10, roughness: 1 })
+    new THREE.ShadowMaterial({ opacity: 0.16 })
   );
   floor.rotation.x = -Math.PI / 2;
   floor.position.y = -0.03;
@@ -122,10 +151,10 @@
   holder.position.y = 0.99; rig.add(holder);
   var flame = new THREE.Mesh(
     new THREE.SphereGeometry(0.06, 12, 12),
-    new THREE.MeshBasicMaterial({ color: 0xffd489 })
+    new THREE.MeshBasicMaterial({ color: C.flame })
   );
   flame.position.y = 1.36; flame.scale.y = 1.7; rig.add(flame);
-  var flameLight = new THREE.PointLight(0xffc46b, 5, 4, 2);
+  var flameLight = new THREE.PointLight(C.flame, 2.6, 4, 2);
   flameLight.position.y = 1.4; rig.add(flameLight);
 
   // ── six covers: plate, chair, glass ──
@@ -148,8 +177,8 @@
     var glass = new THREE.Mesh(
       new THREE.CylinderGeometry(0.075, 0.055, 0.26, 16),
       new THREE.MeshStandardMaterial({
-        color: 0xbfd6e8, roughness: 0.08, metalness: 0.1,
-        transparent: true, opacity: 0.45
+        color: C.glass, roughness: 0.06, metalness: 0.05,
+        transparent: true, opacity: 0.5
       })
     );
     glass.position.set(cx * 1.4 - cz * 0.36, 1.11, cz * 1.4 + cx * 0.36);
@@ -165,10 +194,10 @@
 
     // chair: seat + back
     var chair = new THREE.Group();
-    var seat = new THREE.Mesh(new THREE.BoxGeometry(0.62, 0.09, 0.62), isYou ? brassMat : wood);
+    var seat = new THREE.Mesh(new THREE.BoxGeometry(0.62, 0.09, 0.62), isYou ? brassMat : chairMat);
     seat.position.y = 0.58; seat.castShadow = true;
     chair.add(seat);
-    var back = new THREE.Mesh(new THREE.BoxGeometry(0.62, 0.78, 0.09), isYou ? brassMat : wood);
+    var back = new THREE.Mesh(new THREE.BoxGeometry(0.62, 0.78, 0.09), isYou ? brassMat : chairMat);
     back.position.set(0, 0.98, 0.3); back.castShadow = true;
     chair.add(back);
     for (var lx = -1; lx <= 1; lx += 2) {
@@ -220,7 +249,7 @@
 
     // candle flicker
     var f = 0.85 + Math.sin(t * 11) * 0.06 + Math.sin(t * 27) * 0.04;
-    flameLight.intensity = 5 * f;
+    flameLight.intensity = 2.6 * f;
     flame.scale.set(f, 1.7 * f, f);
 
     renderer.render(scene, camera);
