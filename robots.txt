@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://yashgoel0810.github.io/six-at-seven/sitemap.xml

@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Six at Seven — dinner tables of six founders, one night a week</title>
+<meta name="description" content="A table of six founders who have never met. Matched on how you think, not what you raised. One dinner a week in Delhi NCR, venue revealed on the day.">
+<link rel="canonical" href="https://yashgoel0810.github.io/six-at-seven/">
+<meta name="theme-color" content="#0a0b0c">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="Six at Seven — dinner tables of six founders">
+<meta property="og:description" content="Five founders you would never have found on your own, one long dinner, no pitching.">
+<meta property="og:url" content="https://yashgoel0810.github.io/six-at-seven/">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='14' fill='none' stroke='%23e0a850' stroke-width='2'/%3E%3Ccircle cx='16' cy='16' r='6' fill='%23e0a850'/%3E%3C/svg%3E">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Product","name":"Six at Seven membership",
+"description":"A weekly dinner table of six founders in Delhi NCR, matched by a short questionnaire and checked by a person.",
+"brand":{"@type":"Brand","name":"Six at Seven"},
+"areaServed":"Delhi NCR, India",
+"offers":{"@type":"Offer","price":"2499","priceCurrency":"INR","availability":"https://schema.org/PreOrder",
+"description":"Monthly membership, cancel any time. The dinner bill is paid directly to the restaurant."}}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"Who counts as a founder?","acceptedAnswer":{"@type":"Answer","text":"Anyone currently building something they own a piece of — registered or not, funded or not, full time or nights and weekends. Solo founders, co-founders and founding-team employees all sit at the same tables."}},
+{"@type":"Question","name":"Is this a networking event?","acceptedAnswer":{"@type":"Answer","text":"No. There is no stage, no name tags, no deck and no round of introductions. It is six people having dinner. What comes out of it is between you."}},
+{"@type":"Question","name":"Who pays for the dinner?","acceptedAnswer":{"@type":"Answer","text":"You do, at the restaurant, at menu price. Membership covers the matching, the venue work and the reservation."}},
+{"@type":"Question","name":"What if I cannot make a week?","acceptedAnswer":{"@type":"Answer","text":"Decline the invite. Nothing is charged per dinner, so skipping one costs you nothing but the seat."}}]}
+</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<nav id="nav" aria-label="Primary">
+  <a class="brand" href="#top"><span class="glyph" aria-hidden="true"></span><b>Six at Seven</b></a>
+  <ul class="navlinks" id="navlinks">
+    <li><a href="#how">How it works</a></li>
+    <li><a href="#table">The table</a></li>
+    <li><a href="#trust">Trust</a></li>
+    <li><a href="#pricing">Membership</a></li>
+    <li><a href="#faq">FAQ</a></li>
+  </ul>
+  <a class="btn btn-primary" href="#quiz">Claim a seat <span class="arw" aria-hidden="true">→</span></a>
+  <button class="navtoggle" id="navtoggle" aria-expanded="false" aria-controls="navlinks" aria-label="Open menu">
+    <svg width="18" height="14" viewBox="0 0 18 14" aria-hidden="true"><path d="M0 1h18M0 7h18M0 13h18" stroke="currentColor" stroke-width="1.6"/></svg>
+  </button>
+</nav>
+
+<main id="main">
+<header class="hero" id="top">
+  <div class="hero-glow" aria-hidden="true"></div>
+
+  <div>
+    <span class="eyebrow"><span class="dot" aria-hidden="true"></span>Delhi NCR · Thursdays, 7pm</span>
+    <h1>
+      <span class="ln"><span>Six founders.</span></span>
+      <span class="ln"><span>One table.</span></span>
+      <span class="ln"><span><em>Nobody pitching.</em></span></span>
+    </h1>
+    <p class="lede">Eight questions, four minutes. We seat you with <b>five founders you have never met</b> — close enough in stage to understand the week you just had, far enough apart that nobody is competing. The invite lands on WhatsApp. Say yes and you get the address on the day.</p>
+    <div class="hero-cta">
+      <a class="btn btn-primary" href="#quiz">Take the 4-minute quiz <span class="arw" aria-hidden="true">→</span></a>
+      <a class="btn btn-ghost" href="#how">See how it works</a>
+    </div>
+    <p class="hero-note"><span>₹2,499 a month</span>, incl. GST · cancel any time · dinner billed by the restaurant</p>
+  </div>
+
+  <div class="stage" id="stage">
+    <div class="stage-fallback" id="stageFallback" aria-hidden="true">
+      <div class="ring"></div>
+    </div>
+    <canvas id="tableCanvas" role="img" aria-label="A round dinner table set for six, slowly rotating"></canvas>
+    <span class="stage-hint" id="stageHint">Drag to spin the table</span>
+  </div>
+</header>
+
+<div class="marquee" aria-hidden="true">
+  <ul id="mq1">
+    <li>pre-revenue</li><li>second-time founder</li><li>D2C, 40 orders a day</li><li>bootstrapped, profitable</li>
+    <li>just shut one down</li><li>seed, hiring badly</li><li>agency turning product</li><li>solo, no co-founder yet</li>
+  </ul>
+</div>
+
+<!-- HOW -->
+<section id="how">
+  <div class="wrap">
+    <div class="sec-head" data-reveal>
+      <span class="label">01 — How it works</span>
+      <h2>Three steps between you and <em>dinner</em>.</h2>
+      <p>No profiles, no swiping, no group chat that dies on day three.</p>
+    </div>
+    <div class="steps">
+      <article class="step" data-reveal><i class="bar" aria-hidden="true"></i>
+        <span class="n">1</span>
+        <h3>Answer eight questions.</h3>
+        <p>Four minutes on how you argue, what you are stuck on and what you would rather not talk about. No logo, no valuation, no LinkedIn import.</p>
+      </article>
+      <article class="step" data-reveal><i class="bar" aria-hidden="true"></i>
+        <span class="n">2</span>
+        <h3>We build the table.</h3>
+        <p>Matching drafts a six, then a human reads it before it goes out — checking that nobody is a competitor, an investor of another guest, or someone you already know.</p>
+      </article>
+      <article class="step" data-reveal><i class="bar" aria-hidden="true"></i>
+        <span class="n">3</span>
+        <h3>Thursday, 7pm.</h3>
+        <p>The invite arrives on WhatsApp with the neighbourhood and the shape of the table. Yes or no. The venue lands the morning of, booked under one name.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- TABLE -->
+<section id="table">
+  <div class="wrap">
+    <div class="sec-head" data-reveal>
+      <span class="label">02 — Who you will meet</span>
+      <h2>Five people who <em>get the week</em> you just had.</h2>
+      <p>Six seats. Here is how we fill the other five.</p>
+    </div>
+    <div class="seatgrid">
+      <article class="seatcard" data-reveal><span class="tag">Seat 01</span><h3>A stage you recognise</h3><p>Roughly your altitude — pre-revenue with pre-revenue, post-Series-A with post-Series-A. Advice only lands between people carrying similar weight.</p></article>
+      <article class="seatcard" data-reveal><span class="tag">Seat 02</span><h3>A different industry</h3><p>Never a direct competitor. You can say the real number out loud because nobody at the table is going to use it.</p></article>
+      <article class="seatcard" data-reveal><span class="tag">Seat 03</span><h3>Someone further along</h3><p>One seat is held for a founder who has already been where the table is heading. Not a mentor, not billing you. Just further down the same road.</p></article>
+      <article class="seatcard" data-reveal><span class="tag">Seat 04</span><h3>Someone who disagrees with you</h3><p>The questionnaire measures how you handle being wrong. We deliberately seat one person whose answers cut against yours.</p></article>
+      <article class="seatcard" data-reveal><span class="tag">Seat 05</span><h3>Nobody from your circle</h3><p>Same cap table, same accelerator batch, same phone contacts — all filtered out. You will not be seated with someone you would have met anyway.</p></article>
+      <article class="seatcard you" data-reveal><span class="tag">Seat 06</span><h3>You</h3><p>Bring nothing. No deck, no one-liner, no version of yourself that sounds fundable. The quiz already did the introduction.</p></article>
+    </div>
+  </div>
+</section>
+
+<!-- QUOTES -->
+<section id="quotes">
+  <div class="wrap">
+    <div class="sec-head" data-reveal>
+      <span class="label">03 — Around the table</span>
+      <h2>What a table <em>should</em> sound like.</h2>
+      <p>Concept build: no dinners have run yet, so these are the conversations we are designing for — not customer quotes. Real ones replace them after the first tables.</p>
+    </div>
+    <div class="quotes">
+      <article class="quote" data-reveal>
+        <p class="q serif">“Nobody asked what we had raised. It took an hour to notice.”</p>
+        <p>Most rooms open with that question. This one should open with an argument about hiring your first salesperson and never get back to it.</p>
+        <p class="who">Illustrative — not a customer quote</p>
+      </article>
+      <article class="quote" data-reveal>
+        <p class="q serif">“I said the churn number out loud for the first time.”</p>
+        <p>Nobody at the table can fund you, hire you or leak it. That is the whole design: a room where the real number is sayable.</p>
+        <p class="who">Illustrative — not a customer quote</p>
+      </article>
+      <article class="quote" data-reveal>
+        <p class="q serif">“Gurgaon to Hauz Khas on a Thursday. Worth it.”</p>
+        <p>If you know NCR traffic you know what that sentence costs. The bar is a table good enough to earn the drive — that is what we are building towards.</p>
+        <p class="who">Illustrative — not a customer quote</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST -->
+<section id="trust">
+  <div class="wrap">
+    <div class="sec-head" data-reveal>
+      <span class="label">04 — Trust and safety</span>
+      <h2>Say yes without <em>checking anyone out</em> first.</h2>
+      <p>The things you would want to know before eating with five strangers, in plain words.</p>
+    </div>
+    <div class="trust">
+      <div class="item" data-reveal>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l7 3v6c0 4.5-3 7.6-7 9-4-1.4-7-4.5-7-9V6z"/><path d="M9 12l2 2 4-4"/></svg>
+        <div><h3>Verified by a person</h3><p>Every member shows a government ID and one proof they are building what they say — a domain, a GST number, an app listing. A human checks both.</p></div>
+      </div>
+      <div class="item" data-reveal>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="10" width="16" height="10" rx="2"/><path d="M8 10V7a4 4 0 018 0v3"/></svg>
+        <div><h3>The table stays at the table</h3><p>No recording, no posting, no adding people to a CRM afterwards. Everyone agrees to it at signup; breaking it ends the membership.</p></div>
+      </div>
+      <div class="item" data-reveal>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-4.4-7-10a7 7 0 1114 0c0 5.6-7 10-7 10z"/><circle cx="12" cy="11" r="2.5"/></svg>
+        <div><h3>Venues we have eaten in</h3><p>Well lit, reachable, quiet enough to hear the far end of the table. We have met the manager and sat at the exact table you will get.</p></div>
+      </div>
+      <div class="item" data-reveal>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12a8 8 0 11-3-6.2"/><path d="M21 4v5h-5"/></svg>
+        <div><h3>No investors in disguise</h3><p>Nobody is seated to source deals. If a fund wants in, they host their own table under their own name, announced up front.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section id="pricing">
+  <div class="wrap">
+    <div class="sec-head" data-reveal>
+      <span class="label">05 — Membership</span>
+      <h2>One price. <em>Four dinners a month.</em></h2>
+    </div>
+    <div class="price-wrap">
+      <div class="price-card" data-reveal>
+        <span class="label" style="margin-bottom:0">Founder membership</span>
+        <p class="amt serif">₹2,499</p>
+        <p class="per">a month, incl. GST</p>
+        <a class="btn btn-primary" href="#quiz">Claim a seat <span class="arw" aria-hidden="true">→</span></a>
+        <p class="fine">Not seated within 30 days? Full refund, no form.</p>
+      </div>
+      <ul class="incl" data-reveal>
+        <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12l5 5L20 6"/></svg><span><b>Up to four Thursday tables a month</b> — three in your first month while we place you.</span></li>
+        <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12l5 5L20 6"/></svg><span><b>Matching, then a human review</b> of every table before the invite goes out.</span></li>
+        <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12l5 5L20 6"/></svg><span><b>Vetted venues</b>, reserved under one name, revealed the morning of.</span></li>
+        <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12l5 5L20 6"/></svg><span><b>A real person on WhatsApp</b> before and after every dinner.</span></li>
+        <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12l5 5L20 6"/></svg><span><b>Cancel from the dashboard</b> — no call, no retention offer.</span></li>
+        <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12l5 5L20 6"/></svg><span>The dinner bill is <b>yours, at menu price</b>. No markup, no minimum spend.</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- QUIZ -->
+<section id="quiz">
+  <div class="wrap">
+    <div class="sec-head" data-reveal style="text-align:center;margin-inline:auto">
+      <span class="label">06 — Your seat</span>
+      <h2>Eight questions, <em>then a table</em>.</h2>
+      <p style="margin-inline:auto">Four minutes. We do the rest.</p>
+    </div>
+    <form class="quiz" id="quizForm" data-reveal novalidate>
+      <div class="quizbar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-label="Quiz progress"><i id="quizFill"></i></div>
+      <div id="quizBody" aria-live="polite"></div>
+    </form>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="wrap">
+    <div class="sec-head" data-reveal>
+      <span class="label">07 — Questions</span>
+      <h2>What founders ask <em>first</em>.</h2>
+    </div>
+    <div class="faq" data-reveal>
+      <details><summary>Who counts as a founder?</summary><div class="a">Anyone currently building something they own a piece of — registered or not, funded or not, full time or nights and weekends. Solo founders, co-founders and early founding-team employees sit at the same tables. What we screen for is that you are carrying real risk, not a job title.</div></details>
+      <details><summary>Is this a networking event?</summary><div class="a">No. There is no stage, no name tags, no round of introductions and no organiser standing up to talk. It is six people having dinner. Whatever comes out of it is between you.</div></details>
+      <details><summary>I am early and unfunded. Will I be out of place?</summary><div class="a">You will be seated with people at your altitude. A table where one person has raised a Series B and another is on week three is bad for both of them, so we do not build it.</div></details>
+      <details><summary>Who pays for the dinner?</summary><div class="a">You do, at the restaurant, at menu price. Membership covers matching, venue work and the reservation — never a markup on your food.</div></details>
+      <details><summary>What if I cannot make a week?</summary><div class="a">Decline the invite. Nothing is charged per dinner, so skipping one costs you nothing but that seat. The month covers the rest.</div></details>
+      <details><summary>Can I bring my co-founder?</summary><div class="a">Not to your table. They are welcome to join and take the quiz, and we will make sure you are never seated together — two people from the same company changes how everyone else talks.</div></details>
+      <details><summary>What if you cannot seat me?</summary><div class="a">Then you should not be paying. If we have not seated you at a table within your first 30 days, we refund the month in full. Tell us on WhatsApp; there is no form.</div></details>
+      <details><summary>Which cities?</summary><div class="a">Delhi NCR first — South Delhi, Gurgaon and Noida. Bengaluru and Mumbai open next, and the quiz lets you mark interest so we know where to go.</div></details>
+    </div>
+  </div>
+</section>
+
+<section class="final">
+  <div class="wrap" data-reveal>
+    <h2 class="serif">Thursday is <em>already taken</em>.</h2>
+    <p>The table gets built whether you are on it or not. Eight questions is the whole ask.</p>
+    <a class="btn btn-primary" href="#quiz">Claim a seat <span class="arw" aria-hidden="true">→</span></a>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <div>
+        <a class="brand" href="#top" style="margin-bottom:14px"><span class="glyph" aria-hidden="true"></span><b>Six at Seven</b></a>
+        <p style="max-width:34ch">Dinner tables of six founders, Thursdays in Delhi NCR. Matched by questionnaire, checked by a person, seated at venues we have eaten in.</p>
+      </div>
+      <div>
+        <h4>Product</h4>
+        <ul>
+          <li><a href="#how">How it works</a></li>
+          <li><a href="#table">The table</a></li>
+          <li><a href="#pricing">Membership</a></li>
+          <li><a href="#quiz">Take the quiz</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#trust">Trust and safety</a></li>
+          <li><a href="#faq">FAQ</a></li>
+          <li><a href="mailto:hello@sixatseven.in">hello@sixatseven.in</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footbase">
+      <span>Six at Seven · Delhi NCR</span>
+      <span>Every table read by a person before it goes out.</span>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js" defer></script>
+<script src="js/table3d.js" defer></script>
+<script src="js/app.js" defer></script>
+</body>
+</html>
