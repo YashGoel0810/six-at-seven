@@ -2,462 +2,68 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>The Table &amp; The Build — strategy deck</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Strategy decks — The Table &amp; The Build</title>
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-:root{
-  --bg:#f7f1e8; --card:#fffaf3; --card-2:#efe5d8; --line:#e0d2c0;
-  --ink:#31181c; --dim:#6b5550; --accent:#471d1f; --fill:#8c2f32; --cream:#fffaf3;
-}
+:root{--bg:#f7f1e8;--card:#fffaf3;--card-2:#efe5d8;--line:#e0d2c0;--ink:#31181c;--dim:#6b5550;--accent:#471d1f;--fill:#8c2f32}
 *{box-sizing:border-box;margin:0;padding:0}
-body{background:#ddd2c4;font-family:Inter,system-ui,sans-serif;color:var(--ink)}
-@page{size:1280px 720px;margin:0}
-.slide{
-  width:1280px;height:720px;overflow:hidden;position:relative;
-  background:var(--bg);padding:58px 72px;display:flex;flex-direction:column;
-  page-break-after:always;break-after:page;
-}
-.slide+.slide{margin-top:26px}
-@media print{.slide+.slide{margin-top:0}}
+body{background:var(--bg);font-family:Inter,system-ui,sans-serif;color:var(--ink);padding:72px 24px;line-height:1.5}
+.wrap{max-width:900px;margin:0 auto}
 .eyebrow{font-size:12px;letter-spacing:2.4px;text-transform:uppercase;color:var(--fill);font-weight:600;margin-bottom:14px}
-h1{font-family:"Instrument Serif",Georgia,serif;font-weight:400;font-size:74px;line-height:1.02;letter-spacing:-.5px}
-h2{font-family:"Instrument Serif",Georgia,serif;font-weight:400;font-size:46px;line-height:1.08;margin-bottom:8px}
-h2 em{font-style:italic;color:var(--fill)}
-.sub{font-size:16px;color:var(--dim);line-height:1.5;max-width:76ch;margin-bottom:22px}
-.row{display:flex;gap:18px}
-.col{flex:1}
-.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:20px 22px}
-.card.alt{background:var(--card-2)}
-.card.dark{background:var(--accent);color:var(--cream);border-color:var(--accent)}
-.card.dark .k,.card.dark .lbl{color:var(--card-2)}
-.k{font-size:11px;letter-spacing:1.6px;text-transform:uppercase;color:var(--fill);font-weight:600;margin-bottom:8px}
-.big{font-family:"Instrument Serif",Georgia,serif;font-size:42px;line-height:1}
-.big.sm{font-size:32px}
-p.b{font-size:14.5px;line-height:1.55;color:var(--dim)}
-.card.dark p.b{color:#e8dbd0}
-ul{list-style:none}
-li{font-size:14.5px;line-height:1.5;color:var(--dim);padding-left:16px;position:relative;margin-bottom:9px}
-li::before{content:"";position:absolute;left:0;top:8px;width:5px;height:5px;border-radius:50%;background:var(--fill)}
-.card.dark li{color:#e8dbd0}
-.card.dark li::before{background:var(--card-2)}
-table{width:100%;border-collapse:collapse;font-size:13.5px}
-th{text-align:left;font-size:10.5px;letter-spacing:1.4px;text-transform:uppercase;color:var(--fill);font-weight:600;padding:0 10px 9px;border-bottom:1px solid var(--line)}
-td{padding:9px 10px;border-bottom:1px solid var(--line);color:var(--dim)}
-td.num{font-variant-numeric:tabular-nums;text-align:right}
-td strong{color:var(--ink);font-weight:600}
-tr:last-child td{border-bottom:none}
-.foot{margin-top:auto;padding-top:16px;border-top:1px solid var(--line);font-size:12px;color:var(--dim);display:flex;justify-content:space-between;gap:20px}
-.pill{display:inline-block;background:var(--card-2);border:1px solid var(--line);border-radius:100px;padding:5px 13px;font-size:12px;color:var(--accent);font-weight:500;margin:0 6px 7px 0}
-.num-badge{font-family:"Instrument Serif",Georgia,serif;font-size:19px;color:var(--fill);margin-right:8px}
-.src{font-size:11px;color:var(--dim);font-style:italic}
-.phase{display:flex;align-items:center;gap:10px;margin-bottom:12px}
-.phase b{font-size:12px;letter-spacing:2px;text-transform:uppercase;background:var(--fill);color:var(--cream);padding:4px 11px;border-radius:4px;font-weight:600}
+h1{font-family:"Instrument Serif",Georgia,serif;font-weight:400;font-size:clamp(38px,6vw,60px);line-height:1.05;margin-bottom:16px}
+.lede{font-size:17px;color:var(--dim);max-width:62ch;margin-bottom:40px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:18px}
+a.card{display:block;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:26px;text-decoration:none;color:inherit;transition:border-color .2s,transform .2s}
+a.card:hover{border-color:var(--fill);transform:translateY(-2px)}
+a.card:focus-visible{outline:2px solid var(--fill);outline-offset:3px}
+.k{font-size:11px;letter-spacing:1.6px;text-transform:uppercase;color:var(--fill);font-weight:600;margin-bottom:10px}
+h2{font-family:"Instrument Serif",Georgia,serif;font-weight:400;font-size:30px;margin-bottom:10px}
+p.b{font-size:14.5px;color:var(--dim)}
+.meta{margin-top:14px;padding-top:14px;border-top:1px solid var(--line);font-size:13px;color:var(--dim);display:flex;justify-content:space-between;gap:12px}
+.docs{margin-top:34px;background:var(--card-2);border:1px solid var(--line);border-radius:14px;padding:22px 26px}
+.docs a{color:var(--accent);font-weight:500}
+.note{margin-top:30px;font-size:13px;color:var(--dim);border-top:1px solid var(--line);padding-top:18px}
 </style>
 </head>
 <body>
-
-<!-- 1 COVER -->
-<section class="slide" style="justify-content:center">
-  <div class="eyebrow">Concept strategy · Delhi NCR · 2026</div>
-  <h1>The Table<br>&amp; The Build.</h1>
-  <p class="sub" style="font-size:19px;margin-top:20px;max-width:64ch">
-    A two-phase company. Phase one puts founders in a room and makes money doing it.
-    Phase two turns the room into companies.
+<div class="wrap">
+  <div class="eyebrow">Delhi NCR · 2026</div>
+  <h1>The Table &amp; The Build.</h1>
+  <p class="lede">
+    One company, two products, deliberately sequenced. Phase 1 is a small-format
+    events business that generates cash from month one. Phase 2 is a co-founder
+    formation product that is only possible because Phase 1 earned the roster.
+    A deck each, plus the full written strategy.
   </p>
-  <div class="row" style="margin-top:28px;max-width:1040px">
-    <div class="card col"><div class="k">Phase 1 — The Table</div><p class="b">Curated dinners and small-format events. Cash-generative from month one.</p></div>
-    <div class="card col"><div class="k">Phase 2 — The Build</div><p class="b">Co-founder formation sprints. Built on the trust Phase 1 already earned.</p></div>
-  </div>
-  <div class="row" style="margin-top:16px;max-width:1040px">
-    <div class="card col alt"><div class="k">Breakeven</div><div class="big sm">70 members</div></div>
-    <div class="card col alt"><div class="k">Capital to month 6</div><div class="big sm">₹3–4L</div></div>
-    <div class="card col alt"><div class="k">Year-2 EBITDA, NCR only</div><div class="big sm">₹1.04Cr</div></div>
-  </div>
-  <div class="foot"><span>Prepared for Yash Goel</span><span>All figures modelled, not measured — assumptions shown throughout</span></div>
-</section>
 
-<!-- 2 PROBLEM -->
-<section class="slide">
-  <div class="eyebrow">01 — The problem</div>
-  <h2>Founders are surrounded by people<br>and <em>alone anyway</em>.</h2>
-  <p class="sub">Two distinct pains, usually treated as one. They are not. They need different products — which is exactly why this is two phases.</p>
-  <div class="row" style="flex:1">
-    <div class="card col">
-      <div class="k">Pain A — isolation</div>
-      <div class="big">Nobody to<br>say it to</div>
-      <p class="b" style="margin-top:14px">You cannot tell your team you are scared, your investors that it is not working, or your friends what an ARR miss feels like. The peer conversation has no venue.</p>
-      <p class="b" style="margin-top:12px"><strong style="color:var(--ink)">Existing answer:</strong> conferences and WhatsApp groups. Both optimise for volume of contact, not depth.</p>
-    </div>
-    <div class="card col">
-      <div class="k">Pain B — the wrong team</div>
-      <div class="big">65%</div>
-      <p class="b" style="margin-top:14px">of high-potential startup failures come from people problems — co-founder conflict above all — not from product or market. The team decision is the highest-stakes one, made with the least information.</p>
-      <p class="src" style="margin-top:12px">Noam Wasserman, <em>The Founder's Dilemmas</em>, Harvard Business School.</p>
-    </div>
+  <div class="grid">
+    <a class="card" href="phase-1-the-table.html">
+      <div class="k">Phase 1</div>
+      <h2>The Table</h2>
+      <p class="b">Six founders, one table, Thursdays. Formats, unit economics, target group, go-to-market and the first 90 days.</p>
+      <div class="meta"><span>13 slides</span><span>Breakeven at 70 members</span></div>
+    </a>
+    <a class="card" href="phase-2-the-build.html">
+      <div class="k">Phase 2</div>
+      <h2>The Build</h2>
+      <p class="b">A six-week co-founder formation sprint. Sprint design, three revenue lines, cohort economics and the launch gate.</p>
+      <div class="meta"><span>13 slides</span><span>₹42.9L year-1 cash</span></div>
+    </a>
   </div>
-  <div class="foot"><span>Phase 1 answers Pain A. Phase 2 answers Pain B.</span><span>01</span></div>
-</section>
 
-<!-- 3 WHY NOW -->
-<section class="slide">
-  <div class="eyebrow">02 — Why now</div>
-  <h2>The behaviour is <em>already proven</em>.<br>Just not here, and not for founders.</h2>
-  <p class="sub">This is not a bet on whether people will pay to eat with strangers. That question has been answered at scale. The open question is whether a founder-specific version retains.</p>
-  <div class="row">
-    <div class="card col"><div class="k">Proof of demand</div><div class="big">€18M</div><p class="b" style="margin-top:10px">Timeleft ARR, 20 months after launching weekly dinners between strangers. 150,000 diners a month, 200+ cities, ~100 staff.</p></div>
-    <div class="card col"><div class="k">Proof it starts small</div><div class="big">€125</div><p class="b" style="margin-top:10px">Timeleft's first week of revenue — a Typeform, a WhatsApp group and a Stripe link. No app. They ran to €1M/month on no-code.</p></div>
-    <div class="card col"><div class="k">The Indian market</div><div class="big">2.23L</div><p class="b" style="margin-top:10px">DPIIT-recognised startups in India; 55,200 added in FY26 alone, up 51.6% year on year. Delhi NCR is a top-three cluster.</p></div>
+  <div class="docs">
+    <div class="k">Written in full</div>
+    <p class="b"><a href="../STRATEGY.md">STRATEGY.md</a> — the complete strategy: both phases, five event formats with a sequencing rule, unit economics, target group, three-stage GTM and a risk register.</p>
+    <p class="b" style="margin-top:8px"><a href="../">The Table website</a> — the live Phase 1 product site.</p>
   </div>
-  <div class="card alt" style="margin-top:18px">
-    <p class="b"><strong style="color:var(--ink)">The insight worth stealing:</strong> Timeleft treats the dinner itself as the technology — a table, five strangers, three hours, and the natural structure of a meal. No hosts, no ambassadors, no icebreakers. That is why it scales without a local team in every city, and it is the operating model Phase 1 copies.</p>
-  </div>
-  <div class="foot"><span>Sources: Clef de voûte interview with Timeleft CEO (Oct 2025); PIB / DPIIT Startup India (Apr 2026)</span><span>02</span></div>
-</section>
 
-<!-- 4 THE TWO PHASES -->
-<section class="slide">
-  <div class="eyebrow">03 — The structure</div>
-  <h2>One company. <em>Two products.</em><br>The first one pays for the second.</h2>
-  <p class="sub">Most founder-community businesses die trying to monetise introductions. This structure avoids that by selling dinners first and outcomes second — never the introduction itself.</p>
-  <div class="row" style="flex:1">
-    <div class="card col">
-      <div class="phase"><b>Phase 1</b><span style="font-size:13px;color:var(--dim)">Months 0–12</span></div>
-      <h2 style="font-size:32px;margin-bottom:10px">The Table</h2>
-      <ul>
-        <li>Curated dinners and small events for founders and operators</li>
-        <li>Revenue from day one: seat fees and membership</li>
-        <li>Builds the only asset that matters — a trusted, verified roster</li>
-        <li>Low capital, no inventory, no venue ownership</li>
-      </ul>
-      <div class="card alt" style="margin-top:14px;padding:13px 15px"><p class="b"><strong style="color:var(--ink)">Job:</strong> generate cash and earn trust at scale.</p></div>
-    </div>
-    <div class="card col">
-      <div class="phase"><b>Phase 2</b><span style="font-size:13px;color:var(--dim)">Months 9–24</span></div>
-      <h2 style="font-size:32px;margin-bottom:10px">The Build</h2>
-      <ul>
-        <li>Structured co-founder formation sprints, invite-only</li>
-        <li>Recruited from Phase 1's roster — zero cold acquisition</li>
-        <li>Sells a formed team and a tested decision, never an introduction</li>
-        <li>Optional equity participation in teams that form</li>
-      </ul>
-      <div class="card alt" style="margin-top:14px;padding:13px 15px"><p class="b"><strong style="color:var(--ink)">Job:</strong> convert trust into high-value outcomes.</p></div>
-    </div>
-  </div>
-  <div class="foot"><span>Phase 2 without Phase 1 is a cold-start problem. Phase 1 without Phase 2 is a lifestyle business.</span><span>03</span></div>
-</section>
-
-<!-- 5 PHASE 1 WHAT -->
-<section class="slide">
-  <div class="phase"><b>Phase 1</b><span class="eyebrow" style="margin:0">04 — The Table</span></div>
-  <h2>Six founders. One table.<br><em>Nobody pitching.</em></h2>
-  <p class="sub">A weekly format with a hard constraint set. The constraints are the product — anyone can book a restaurant, almost nobody can guarantee who sits there.</p>
-  <div class="row">
-    <div class="card col"><div class="k">The six seats</div>
-      <ul style="margin-top:2px">
-        <li>A stage you recognise — advice only lands between equals</li>
-        <li>A different industry — never a direct competitor</li>
-        <li>Someone further along the same road</li>
-        <li>Someone whose answers cut against yours</li>
-        <li>Nobody from your circle — same cap table, batch or contacts filtered out</li>
-        <li>You</li>
-      </ul>
-    </div>
-    <div class="col" style="display:flex;flex-direction:column;gap:16px">
-      <div class="card"><div class="k">The rules</div><p class="b">No recording, no posting, no adding anyone to a CRM afterwards. No decks. No investors seated in disguise. Breaking it ends the membership.</p></div>
-      <div class="card"><div class="k">The operating model</div><p class="b">Guests pay the restaurant directly at menu price. We never touch F&amp;B cost, never hold inventory, never guarantee a minimum spend. We sell the seat and the matching.</p></div>
-    </div>
-  </div>
-  <div class="foot"><span>The constraint set is the defensible asset — not the venue, not the app.</span><span>04</span></div>
-</section>
-
-<!-- 6 EVENT FORMATS -->
-<section class="slide" style="padding-top:44px;padding-bottom:44px">
-  <div class="phase"><b>Phase 1</b><span class="eyebrow" style="margin:0">05 — The formats</span></div>
-  <h2>Five formats, <em>one roster</em>.</h2>
-  <p class="sub">Timeleft's members went from 1.4 to 2.2 experiences a month when formats were added beyond dinner. More formats is the single proven lever on retention and revenue per member.</p>
-  <table>
-    <thead><tr><th>Format</th><th>Cadence</th><th>Size</th><th>Guest pays</th><th>What it is for</th></tr></thead>
-    <tbody>
-      <tr><td><strong>The Table</strong></td><td>Weekly, Thu 7pm</td><td>6</td><td>Seat fee + own bill</td><td>The core. Peer conversation, no agenda.</td></tr>
-      <tr><td><strong>The Post-Mortem</strong></td><td>Monthly</td><td>8–10</td><td>Seat fee + own bill</td><td>One founder walks through something that failed. Closed room.</td></tr>
-      <tr><td><strong>The Workbench</strong></td><td>Fortnightly</td><td>12</td><td>Seat fee</td><td>Working session — everyone brings one live problem and leaves with a decision.</td></tr>
-      <tr><td><strong>Long Table</strong></td><td>Quarterly</td><td>30–40</td><td>Ticket ₹1,500–2,500</td><td>The wider room. Top-of-funnel and the recruiting ground for Phase 2.</td></tr>
-      <tr><td><strong>Off-Menu</strong></td><td>Opportunistic</td><td>6–8</td><td>Members only</td><td>A specific operator hosts — an investor, a second-time founder. Scarcity drives renewals.</td></tr>
-    </tbody>
-  </table>
-  <div class="card alt" style="margin-top:14px;padding:13px 16px">
-    <p class="b"><strong style="color:var(--ink)">Sequencing rule:</strong> launch with The Table only. Add one format per quarter, and only after the prior one clears 50 attendees a month. Timeleft opened 325 cities in a year and had to retreat to 220 — depth before breadth is their own stated correction.</p>
-  </div>
-  <div class="row" style="margin-top:14px">
-    <div class="card col" style="padding:14px 16px"><div class="k">Q1 — prove one format</div><p class="b">The Table, weekly. Nothing else exists. The only metric that counts is whether people come back a second and third time.</p></div>
-    <div class="card col" style="padding:14px 16px"><div class="k">Q2 — add depth, not breadth</div><p class="b">The Post-Mortem. Same roster, different emotional register — and the format most likely to travel as content.</p></div>
-    <div class="card col" style="padding:14px 16px"><div class="k">Q3 — add utility</div><p class="b">The Workbench. Shifts the product from company to usefulness, which is what justifies a renewal in month nine.</p></div>
-    <div class="card col" style="padding:14px 16px"><div class="k">Q4 — add reach</div><p class="b">Long Table. The public face, the acquisition engine, and the room Phase 2 recruits from.</p></div>
-  </div>
-  <div class="foot"><span>Every format runs on the same roster, the same matching engine and the same venue relationships.</span><span>05</span></div>
-</section>
-
-<!-- 7 UNIT ECONOMICS P1 -->
-<section class="slide">
-  <div class="phase"><b>Phase 1</b><span class="eyebrow" style="margin:0">06 — Unit economics</span></div>
-  <h2>₹502 contribution <em>per seat</em>.</h2>
-  <p class="sub">Modelled conservatively: 12% no-shows, and restaurant commission realised on only half of covers rather than the headline rate. Guest F&amp;B never enters our P&amp;L.</p>
-  <div class="row">
-    <div class="col">
-      <table>
-        <thead><tr><th>Per seat</th><th class="num">₹</th></tr></thead>
-        <tbody>
-          <tr><td>Booking fee (our revenue)</td><td class="num"><strong>499</strong></td></tr>
-          <tr><td>Venue commission, realised</td><td class="num"><strong>48</strong></td></tr>
-          <tr><td><strong>Revenue</strong></td><td class="num"><strong>547</strong></td></tr>
-          <tr><td>Payment gateway (2%)</td><td class="num">−10</td></tr>
-          <tr><td>Ops, matching, support</td><td class="num">−35</td></tr>
-          <tr><td><strong>Contribution</strong></td><td class="num"><strong>502 · 92%</strong></td></tr>
-        </tbody>
-      </table>
-      <p class="src" style="margin-top:10px">Guest pays ~₹1,100 + tax to the restaurant directly. Delhi NCR group-dining rate, Connaught Place listing.</p>
-    </div>
-    <div class="col" style="display:flex;flex-direction:column;gap:14px">
-      <div class="card"><div class="k">Per table of six</div><div class="big sm">₹3,012</div><p class="b" style="margin-top:8px">contribution per dinner served</p></div>
-      <div class="card dark"><div class="k">Member on ₹899/month</div><div class="big sm">₹910</div><p class="b" style="margin-top:8px">monthly contribution at 2.2 events attended — the benchmark multi-format figure</p></div>
-      <div class="card alt"><p class="b"><strong style="color:var(--ink)">Why margin is not the risk:</strong> asset-light by construction. The risks are churn and CAC, and both are addressed two slides on.</p></div>
-    </div>
-  </div>
-  <div class="foot"><span>Every figure computed from the stated assumptions — none are measured results</span><span>06</span></div>
-</section>
-
-<!-- 8 P&L SCALE -->
-<section class="slide">
-  <div class="phase"><b>Phase 1</b><span class="eyebrow" style="margin:0">07 — Scale</span></div>
-  <h2>Breakeven at <em>70 members</em>.</h2>
-  <p class="sub">Delhi NCR only. Fixed costs step up deliberately with scale — a solo operator to month six, then community and venue hires. No city expansion modelled here.</p>
-  <table>
-    <thead><tr><th>Members</th><th class="num">Tables / mo</th><th class="num">Gross revenue</th><th class="num">Contribution</th><th class="num">Fixed cost</th><th class="num">EBITDA / mo</th></tr></thead>
-    <tbody>
-      <tr><td><strong>70</strong> — breakeven</td><td class="num">26</td><td class="num">₹0.70L</td><td class="num">₹0.64L</td><td class="num">₹0.60L</td><td class="num"><strong>≈ ₹0</strong></td></tr>
-      <tr><td><strong>150</strong> — month 6 target</td><td class="num">55</td><td class="num">₹1.51L</td><td class="num">₹1.37L</td><td class="num">₹0.60L</td><td class="num"><strong>+₹0.77L</strong></td></tr>
-      <tr><td><strong>400</strong> — month 12 target</td><td class="num">147</td><td class="num">₹4.02L</td><td class="num">₹3.64L</td><td class="num">₹1.50L</td><td class="num"><strong>+₹2.14L</strong></td></tr>
-      <tr><td><strong>1,000</strong> — month 24 target</td><td class="num">367</td><td class="num">₹10.05L</td><td class="num">₹9.11L</td><td class="num">₹4.00L</td><td class="num"><strong>+₹5.11L</strong></td></tr>
-    </tbody>
-  </table>
-  <div class="row" style="margin-top:18px">
-    <div class="card col alt"><div class="k">Capital to month 6</div><p class="b"><strong style="color:var(--ink)">₹3–4 lakh.</strong> Venue deposits, first-month ad spend, basic tooling. This is fundable from savings or a friends-and-family cheque — it does not need a VC round.</p></div>
-    <div class="card col alt"><div class="k">What breaks the model</div><p class="b">Not margin. If monthly churn runs at 15% instead of 8%, member LTV falls from ₹11,381 to ₹6,070 and the month-24 column stops being reachable.</p></div>
-  </div>
-  <div class="foot"><span>Assumes 2.2 events attended per member per month and ₹899 membership</span><span>07</span></div>
-</section>
-
-<!-- 9 CHURN / CAC -->
-<section class="slide">
-  <div class="phase"><b>Phase 1</b><span class="eyebrow" style="margin:0">08 — The real risk</span></div>
-  <h2>The only number that <em>decides this</em>.</h2>
-  <p class="sub">Consumer membership communities churn at roughly 5.8% a month — about 51% a year — and low engagement is the top cancellation driver. Everything below is a function of where this lands.</p>
-  <div class="row">
-    <div class="col">
-      <table>
-        <thead><tr><th>Monthly churn</th><th class="num">Member life</th><th class="num">LTV</th><th class="num">LTV:CAC @ ₹300</th></tr></thead>
-        <tbody>
-          <tr><td>15% — bad</td><td class="num">6.7 mo</td><td class="num">₹6,070</td><td class="num">20×</td></tr>
-          <tr><td>12%</td><td class="num">8.3 mo</td><td class="num">₹7,588</td><td class="num">25×</td></tr>
-          <tr><td><strong>8% — plan</strong></td><td class="num"><strong>12.5 mo</strong></td><td class="num"><strong>₹11,381</strong></td><td class="num"><strong>38×</strong></td></tr>
-          <tr><td>5.8% — benchmark</td><td class="num">17.2 mo</td><td class="num">₹15,698</td><td class="num">52×</td></tr>
-        </tbody>
-      </table>
-      <p class="src" style="margin-top:10px">Benchmark: membership-community churn studies, 2026. CAC of ₹300 assumed for Instagram-led acquisition in Indian metros.</p>
-    </div>
-    <div class="col" style="display:flex;flex-direction:column;gap:14px">
-      <div class="card dark">
-        <div class="k">Treat these ratios with suspicion</div>
-        <p class="b">A 38× LTV:CAC is not a sign of genius — it is what any asset-light model shows before fixed cost and before churn is measured. The honest read: <strong style="color:#fff">margin is comfortable, retention is unproven.</strong></p>
-      </div>
-      <div class="card"><div class="k">The test, before any build</div><p class="b">Run one table. Pay for it yourself. Ask all six whether they would come again next week and pay for it. <strong style="color:var(--ink)">If fewer than four say yes, do not build the rest.</strong></p></div>
-    </div>
-  </div>
-  <div class="foot"><span>Consumer social products typically churn hardest at months 3–4 — that is the checkpoint that matters</span><span>08</span></div>
-</section>
-
-<!-- 10 PHASE 2 INTRO -->
-<section class="slide">
-  <div class="phase"><b>Phase 2</b><span class="eyebrow" style="margin:0">09 — The Build</span></div>
-  <h2>Where you meet the person<br>you <em>actually build with</em>.</h2>
-  <p class="sub">Phase 1 earns the right to do this. By month nine there is a verified roster of founders whose judgement, temperament and reliability have been observed in person — repeatedly, and by us.</p>
-  <div class="row" style="flex:1">
-    <div class="card col"><div class="k">What it is</div><p class="b">A six-week structured sprint. Forty invited founders and senior operators, working in rotating pairs on real problems, with a formal decision point at the end: commit to a team, or walk away clean.</p>
-      <ul style="margin-top:12px"><li>Invite-only, drawn from the Phase 1 roster</li><li>Weekly working sessions, not talks</li><li>Deliberate conflict testing built into the format</li><li>A written co-founder agreement template at the end</li></ul>
-    </div>
-    <div class="card col"><div class="k">Why this is defensible</div><p class="b">Anyone can run a mixer. What cannot be copied quickly is <strong style="color:var(--ink)">observed behaviour over months</strong> — who actually showed up, who listened, who was generous when nothing was at stake.</p>
-      <p class="b" style="margin-top:12px">A matching platform has profiles. We have attendance records, host notes and peer feedback across dozens of dinners. That is a different asset class, and Phase 1 accumulates it as a by-product of making money.</p>
-    </div>
-  </div>
-  <div class="foot"><span>Antler India runs 8-week residencies of 60–70 people; Entrepreneur First builds cofounding teams from individuals. The model is validated — the Indian mid-market is not served.</span><span>09</span></div>
-</section>
-
-<!-- 11 LUNCHCLUB WARNING -->
-<section class="slide" style="padding-top:46px;padding-bottom:46px">
-  <div class="eyebrow">10 — The mistake we are designing around</div>
-  <h2>Lunchclub had everything.<br>It <em>still died</em>.</h2>
-  <div class="row">
-    <div class="card col dark">
-      <div class="k">The autopsy</div>
-      <div class="big" style="font-size:36px;margin-bottom:12px">300,000 users<br>5,000,000 intros<br>$24M raised<br>Shut down</div>
-      <p class="b">a16z-backed AI networking platform. Strong engagement, clean product, real usage. It could not convert any of it into revenue and closed quietly in 2022.</p>
-      <div style="margin-top:16px;padding-top:14px;border-top:1px solid rgba(255,250,243,.22)">
-        <div class="k" style="margin-bottom:6px">The pattern it belongs to</div>
-        <p class="b">Bumble Bizz, discontinued in most regions. Professional networking bolted onto a consumer social product does not hold its own weight — which is why Phase 2 here is a separate product with its own price, not a feature of Phase 1.</p>
-      </div>
-      <div style="margin-top:14px;padding-top:14px;border-top:1px solid rgba(255,250,243,.22)">
-        <p class="b" style="font-style:italic">Free, funded and widely used is not a business. It is a bill.</p>
-      </div>
-    </div>
-    <div class="col" style="display:flex;flex-direction:column;gap:14px">
-      <div class="card"><div class="k">Why it failed</div><p class="b">Networking value is <strong style="color:var(--ink)">diffuse and hard to attribute</strong>. A user who benefits cannot say which introduction did it, so willingness to pay stays near zero even among people who genuinely got value.</p></div>
-      <div class="card alt"><div class="k">The lesson, verbatim</div><p class="b" style="font-style:italic">"User engagement metrics tell you whether you built something people use. They do not tell you whether you built something people will pay for."</p></div>
-      <div class="card"><div class="k">What we do differently</div><p class="b">We never sell an introduction. Phase 1 sells <strong style="color:var(--ink)">a seat at a specific dinner on a specific night</strong> — concrete, attributable, easy to price. Phase 2 sells <strong style="color:var(--ink)">a formed team and a tested decision</strong>, not access to a pool of profiles.</p></div>
-    </div>
-  </div>
-  <div class="foot"><span>Source: UnicornBurn startup autopsy, Lunchclub (2018–2022)</span><span>10</span></div>
-</section>
-
-<!-- 12 PHASE 2 REVENUE -->
-<section class="slide">
-  <div class="phase"><b>Phase 2</b><span class="eyebrow" style="margin:0">11 — Revenue lines</span></div>
-  <h2>Three lines. <em>Two of them cash.</em></h2>
-  <p class="sub">The equity line is modelled for completeness but must never be counted on for near-term cash — it pays out in seven to ten years, if at all.</p>
-  <div class="row">
-    <div class="card col"><div class="k">Line A — formation sprint</div><div class="big sm">₹6.22L</div><p class="b" style="margin-top:10px">contribution per cohort. 40 founders × ₹25,000, less ₹3.78L of venue, ops and curation over six weeks. 62% margin.</p><p class="b" style="margin-top:8px"><strong style="color:var(--ink)">4 cohorts a year → ₹24.9L.</strong></p></div>
-    <div class="card col"><div class="k">Line B — deal-flow partners</div><div class="big sm">₹18L</div><p class="b" style="margin-top:10px">per year from 6 VC or corporate partners at ₹3L each, for structured access to cohort demo sessions and the annual Long Table.</p><p class="b" style="margin-top:8px">This is the line Lunchclub never built: <strong style="color:var(--ink)">funds have budget and attributable need.</strong></p></div>
-    <div class="card col dark"><div class="k">Line C — equity (optional)</div><div class="big sm">3–5%</div><p class="b" style="margin-top:10px">in teams that formally form through a sprint. At 24 teams a year and an 8% hit rate against ₹20Cr outcomes, expected value is roughly ₹1.1Cr a year — <strong style="color:#fff">realised a decade later.</strong></p><p class="b" style="margin-top:8px">Treat as upside, never as budget.</p></div>
-  </div>
-  <div class="card alt" style="margin-top:12px;padding:10px 16px"><p class="b"><strong style="color:var(--ink)">Pricing logic:</strong> ₹25,000 for six weeks is roughly a tenth of what the wrong co-founder costs in wasted months, and a rounding error against the 65% of failures attributable to people problems. Priced as insurance, not as an event ticket.</p></div>
-  <div class="row" style="margin-top:12px">
-    <div class="card col alt" style="padding:12px 15px"><div class="k">Why the cash lines come first</div><p class="b">Lines A and B bill inside the quarter they are earned. A business that needs Line C to work is a fund, not a company.</p></div>
-    <div class="card col alt" style="padding:12px 15px"><div class="k">What Line B actually sells</div><p class="b">Not a logo on a page — structured access to teams a VC would otherwise meet six months later. A diligence shortcut, and worth paying for.</p></div>
-  </div>
-  <div class="foot"><span>Cohort economics assume ₹25k venue and ₹18k ops per week, plus ₹1.2L curation and marketing per cohort</span><span>11</span></div>
-</section>
-
-<!-- 13 TG -->
-<section class="slide">
-  <div class="eyebrow">12 — Target group</div>
-  <h2>Who is actually <em>at the table</em>.</h2>
-  <p class="sub">Narrow on purpose. A table that admits everyone is a networking event, and networking events are the thing this is defined against.</p>
-  <table>
-    <thead><tr><th>Segment</th><th>Profile</th><th>Why they pay</th><th class="num">Priority</th></tr></thead>
-    <tbody>
-      <tr><td><strong>Funded founders</strong></td><td>Seed to Series A, 25–40, Delhi NCR, 2–30 staff</td><td>Isolation is acute and budget is real. Highest LTV, lowest price sensitivity.</td><td class="num"><strong>Core</strong></td></tr>
-      <tr><td><strong>Bootstrapped operators</strong></td><td>Profitable ₹1–10Cr businesses, D2C, services, agencies</td><td>Excluded from VC-circuit events entirely. Underserved and loyal.</td><td class="num"><strong>Core</strong></td></tr>
-      <tr><td><strong>Senior operators</strong></td><td>VP/Director at scaled startups, itching to leave</td><td>Phase 2's supply side — the technical and functional half of future teams.</td><td class="num">Secondary</td></tr>
-      <tr><td><strong>Second-time founders</strong></td><td>One exit or one failure behind them</td><td>Seeded free as anchors. They make a table credible for everyone else.</td><td class="num">Seeded</td></tr>
-      <tr><td><strong>Investors</strong></td><td>Angels, early-stage funds</td><td>Phase 2 Line B only. Never seated undisclosed at a Phase 1 table.</td><td class="num">Gated</td></tr>
-    </tbody>
-  </table>
-  <div class="card alt" style="margin-top:16px"><p class="b"><strong style="color:var(--ink)">Explicitly excluded:</strong> agency business-development staff, recruiters, coaches, anyone whose reason for attending is to sell to the table. One of them ruins a dinner for the other five, and the reputation cost compounds far faster than the seat fee.</p></div>
-  <div class="foot"><span>Geographic focus: South Delhi, Gurgaon, Noida. Bengaluru and Mumbai only after NCR clears 400 members.</span><span>12</span></div>
-</section>
-
-<!-- 14 GTM -->
-<section class="slide" style="padding-top:38px;padding-bottom:38px">
-  <div class="eyebrow">13 — Go to market</div>
-  <h2>Hand-built to 100. <em>Paid after.</em></h2>
-  <p class="sub" style="margin-bottom:14px">The first hundred members cannot be bought, because the product is who is in the room and paid acquisition cannot control that.</p>
-  <div class="row">
-    <div class="card col"><div class="k">Stage 1 · Months 0–3 · to 100</div>
-      <ul><li>Hand-pick and personally invite the first 60 from existing networks</li><li>Seed every table with one second-time founder, free</li><li>Zero ad spend — referral and invitation only</li><li>Run the Typeform + WhatsApp + UPI stack. No app, no build</li></ul>
-      <p class="b" style="margin-top:10px"><strong style="color:var(--ink)">Goal:</strong> 12 tables run, and a measured month-3 return rate.</p>
-    </div>
-    <div class="card col"><div class="k">Stage 2 · Months 4–9 · to 400</div>
-      <ul><li>Instagram and LinkedIn creative built from real table footage</li><li>Founder-operator content: the post-mortem format is inherently shareable</li><li>Referral mechanic — a member who brings one pays nothing that month</li><li>Venue co-marketing: restaurants promote their own slow weeknights</li></ul>
-      <p class="b" style="margin-top:10px"><strong style="color:var(--ink)">Goal:</strong> CAC under ₹300 and churn under 10%.</p>
-    </div>
-    <div class="card col"><div class="k">Stage 3 · Months 9–24 · Phase 2</div>
-      <ul><li>First sprint recruited entirely from the existing roster</li><li>Long Table becomes the public showcase and the VC touchpoint</li><li>Sign three deal-flow partners before running cohort two</li><li>Only then consider a second city</li></ul>
-      <p class="b" style="margin-top:10px"><strong style="color:var(--ink)">Goal:</strong> two sprints run, six teams formed.</p>
-    </div>
-  </div>
-  <div class="row" style="margin-top:10px">
-    <div class="card col alt" style="padding:12px 15px"><div class="k">Channel truth</div><p class="b">Instagram carries the reach in Indian metros, but LinkedIn carries the <strong style="color:var(--ink)">credibility</strong> for a founder-gated product. Instagram for fill, LinkedIn for who fills it.</p></div>
-    <div class="card col alt" style="padding:12px 15px"><div class="k">The creative that works</div><p class="b">Not the food. The <strong style="color:var(--ink)">empty sixth chair</strong>, the rules, and one real post-mortem told plainly. Sell the constraint, never the restaurant.</p></div>
-    <div class="card col alt" style="padding:12px 15px"><div class="k">Referral beats spend</div><p class="b">A member who brings one pays nothing that month — ₹899 of margin for a pre-vetted member at roughly a third of paid CAC.</p></div>
-  </div>
-  <div class="foot"><span>Channel priority follows Timeleft's own sequence: prove the format manually, then open with ads, then add formats for depth</span><span>13</span></div>
-</section>
-
-<!-- 15 COMPETITION -->
-<section class="slide">
-  <div class="eyebrow">14 — Landscape</div>
-  <h2>Nobody owns <em>this middle</em>.</h2>
-  <div class="row" style="flex:1">
-    <div class="col">
-      <table>
-        <thead><tr><th>Player</th><th>What they do</th><th>Gap they leave</th></tr></thead>
-        <tbody>
-          <tr><td><strong>Timeleft</strong></td><td>Dinners with strangers, 200+ cities, live in Mumbai and Bengaluru</td><td>General population, not founders. No professional outcome, no vetting.</td></tr>
-          <tr><td><strong>Antler / EF</strong></td><td>Cohort residencies, equity, full-time commitment</td><td>Requires quitting your job. Tiny intake. Nothing for the already-running founder.</td></tr>
-          <tr><td><strong>YC co-founder matching</strong></td><td>150,000+ profiles, free, global</td><td>Profiles, not observed behaviour. No India-specific density, no in-person signal.</td></tr>
-          <tr><td><strong>Startup conferences</strong></td><td>₹1,000–6,500 tickets, hundreds of attendees</td><td>Optimised for volume of contact. The opposite of six people and no agenda.</td></tr>
-          <tr><td><strong>WhatsApp communities</strong></td><td>Free, ubiquitous, unmoderated</td><td>No curation, no accountability, no offline anchor. Decays into noise.</td></tr>
-        </tbody>
-      </table>
-    </div>
-    <div class="col" style="max-width:330px;display:flex;flex-direction:column;gap:14px">
-      <div class="card dark"><div class="k">The position</div><p class="b">Founder-specific, in person, small format, paid — and with a formation product behind it. <strong style="color:#fff">No one in India occupies all five at once.</strong></p></div>
-      <div class="card"><div class="k">The race is real</div><p class="b">Timeleft launched Mumbai and Bengaluru in 2025 with €18M ARR behind it. Treat NCR as contested, not empty — but note they serve the general population, and founder vetting plus a formation product are not features they can bolt on.</p></div>
-    </div>
-  </div>
-  <div class="foot"><span>Landscape assessed Sep 2026 — no Indian player occupies founder-specific, in-person, small-format, paid, with a formation product behind it</span><span>14</span></div>
-</section>
-
-<!-- 16 COMBINED -->
-<section class="slide">
-  <div class="eyebrow">15 — Combined view</div>
-  <h2>Year two, <em>Delhi NCR alone</em>.</h2>
-  <p class="sub">Single city, conservative assumptions, no equity value counted. This is the base case, not the optimistic one.</p>
-  <div class="row">
-    <div class="card col"><div class="k">Phase 1 contribution</div><div class="big sm">₹9.11L</div><p class="b" style="margin-top:8px">per month at 1,000 members</p></div>
-    <div class="card col"><div class="k">Phase 2 sprints</div><div class="big sm">₹2.07L</div><p class="b" style="margin-top:8px">per month — 4 cohorts a year</p></div>
-    <div class="card col"><div class="k">Phase 2 partners</div><div class="big sm">₹1.50L</div><p class="b" style="margin-top:8px">per month — 6 deal-flow partners</p></div>
-    <div class="card col dark"><div class="k">EBITDA</div><div class="big sm">₹8.68L</div><p class="b" style="margin-top:8px">per month after ₹4L fixed — roughly <strong style="color:#fff">₹1.04Cr a year</strong></p></div>
-  </div>
-  <div class="row" style="margin-top:18px">
-    <div class="card col alt"><div class="k">Path to ₹1L/month personally</div><p class="b">Reached at roughly <strong style="color:var(--ink)">150–200 members</strong> — month five or six on plan. That is the milestone that matters before any of the rest.</p></div>
-    <div class="card col alt"><div class="k">What a second city adds</div><p class="b">Bengaluru or Mumbai roughly doubles Phase 1 contribution against a ₹2–3L fixed-cost step. Not before NCR proves month-12 retention.</p></div>
-    <div class="card col alt"><div class="k">Capital required</div><p class="b"><strong style="color:var(--ink)">₹3–4L to month six.</strong> Beyond that the business funds itself. No round is required for this plan to work.</p></div>
-  </div>
-  <div class="foot"><span>Excludes Line C equity entirely. Assumes no revenue from a second city.</span><span>15</span></div>
-</section>
-
-<!-- 17 RISKS -->
-<section class="slide">
-  <div class="eyebrow">16 — Risks, stated plainly</div>
-  <h2>What would <em>kill this</em>.</h2>
-  <table>
-    <thead><tr><th>Risk</th><th>Why it is real</th><th>The mitigation</th></tr></thead>
-    <tbody>
-      <tr><td><strong>Retention</strong></td><td>The single unmeasured number. Consumer social churns hardest at months 3–4 and novelty fades fast.</td><td>Multiple formats, membership over per-event pricing, and a measured month-3 checkpoint before any spend.</td></tr>
-      <tr><td><strong>One bad guest</strong></td><td>A single person pitching ruins the table for five others and the story travels faster than any marketing.</td><td>Human verification, explicit rules at signup, and removal without refund. Reputation is the whole asset.</td></tr>
-      <tr><td><strong>Timeleft enters NCR</strong></td><td>Already in Mumbai and Bengaluru with €18M ARR and real capital behind them.</td><td>They serve the general population. Founder-specific vetting and Phase 2 are not features they can bolt on.</td></tr>
-      <tr><td><strong>Phase 2 cannibalises Phase 1</strong></td><td>If dinners become an audition, the no-agenda promise dies and Phase 1 loses what makes it work.</td><td>Separate brand, separate application, never recruited at a table. Phase 1 members opt in, they are not scouted.</td></tr>
-      <tr><td><strong>Founder bandwidth</strong></td><td>Weekly events are relentless operational work, and this runs alongside other commitments.</td><td>One format, one night a week, until month six. No second format until the first runs itself.</td></tr>
-    </tbody>
-  </table>
-  <div class="foot"><span>Nothing here is fatal on its own. Retention and reputation compound — the other three do not.</span><span>16</span></div>
-</section>
-
-<!-- 18 NEXT -->
-<section class="slide" style="justify-content:center">
-  <div class="eyebrow">17 — Next 90 days</div>
-  <h2 style="font-size:54px">Do not build the platform.<br><em>Run one dinner.</em></h2>
-  <p class="sub" style="font-size:17px;max-width:70ch;margin-top:16px">
-    Timeleft's first week made €125 on a Typeform, a WhatsApp group and a payment link. The entire Phase 1 thesis can be tested for under ₹10,000 and one Thursday evening.
+  <p class="note">
+    Every figure in both decks is computed from stated assumptions and none are
+    measured results — no table has been run yet. Churn and CAC are the two
+    assumptions that decide the model, and both are flagged as unmeasured where
+    they appear.
   </p>
-  <div class="row" style="margin-top:8px">
-    <div class="card col"><div class="num-badge">01</div><strong style="font-size:15px">Weeks 1–2</strong><p class="b" style="margin-top:8px">Run one table of six. Pay for it yourself. Ask all six if they would come again next week and pay. Four yeses is the gate.</p></div>
-    <div class="card col"><div class="num-badge">02</div><strong style="font-size:15px">Weeks 3–8</strong><p class="b" style="margin-top:8px">Six tables on the no-code stack. Charge from table two. Measure return rate, not signups.</p></div>
-    <div class="card col"><div class="num-badge">03</div><strong style="font-size:15px">Weeks 9–12</strong><p class="b" style="margin-top:8px">If month-3 return holds above 60%, open paid acquisition and sign the first three venues on commission.</p></div>
-    <div class="card col dark"><div class="num-badge" style="color:var(--card-2)">04</div><strong style="font-size:15px;color:#fff">Month 9+</strong><p class="b" style="margin-top:8px">Only with a live roster of 400: design Phase 2 and recruit cohort one from inside it.</p></div>
-  </div>
-  <div class="foot"><span>The Table &amp; The Build · Delhi NCR</span><span>Every figure in this deck is modelled from cited comparables — none are measured results</span></div>
-</section>
-
+</div>
 </body>
 </html>
