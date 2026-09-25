@@ -40,17 +40,27 @@
         el.classList.add('in');
         io.unobserve(el);
       });
-    }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+    }, { threshold: 0, rootMargin: '0px 0px -8% 0px' });
     els.forEach(function (el) { io.observe(el); });
-    // safety net: anything still hidden after load gets shown
-    window.addEventListener('load', function () {
-      setTimeout(function () {
-        els.forEach(function (el) {
-          var r = el.getBoundingClientRect();
-          if (r.top < window.innerHeight && !el.classList.contains('in')) el.classList.add('in');
-        });
-      }, 400);
-    });
+    // Safety net. The observer can miss an element whose transition is
+    // interrupted or whose layout shifts after load, so sweep on load AND on
+    // scroll: anything already inside the viewport is forced visible.
+    var sweep = function () {
+      var left = 0;
+      els.forEach(function (el) {
+        if (el.classList.contains('in')) return;
+        var r = el.getBoundingClientRect();
+        if (r.top < window.innerHeight && r.bottom > 0) { el.classList.add('in'); io.unobserve(el); }
+        else left++;
+      });
+      if (!left) window.removeEventListener('scroll', onScroll);
+    };
+    var onScroll = function () {
+      if (onScroll.t) return;
+      onScroll.t = setTimeout(function () { onScroll.t = null; sweep(); }, 120);
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('load', function () { setTimeout(sweep, 400); });
   }
 
   /* ── hero lines ── */
